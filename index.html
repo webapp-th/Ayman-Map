@@ -1,0 +1,1108 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>منهج المهندس أيمن عبد الرحيم</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #8B4513;
+            --secondary-color: #A0522D;
+            --light-color: #F5F5DC;
+            --dark-color: #654321;
+            --accent-color: #D2B48C;
+            --success-color: #8FBC8F;
+            --warning-color: #F4A460;
+            --danger-color: #CD5C5C;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: var(--light-color);
+            color: var(--dark-color);
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        /* Header Styles */
+        header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 1.5rem 0;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+        }
+        
+        .subtitle {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            color: var(--accent-color);
+        }
+        
+        .nav-buttons {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .btn {
+            padding: 8px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s;
+        }
+        
+        .btn-primary {
+            background-color: var(--accent-color);
+            color: var(--dark-color);
+        }
+        
+        .btn-outline {
+            background-color: transparent;
+            border: 1px solid white;
+            color: white;
+        }
+        
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
+        }
+        
+        /* Page Styles */
+        .page {
+            display: none;
+            min-height: 70vh;
+            margin: 2rem 0;
+        }
+        
+        .page.active {
+            display: block;
+        }
+        
+        /* Home Page */
+        .welcome-section {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            padding: 2rem;
+            margin-bottom: 2rem;
+            text-align: center;
+            border: 1px solid var(--accent-color);
+        }
+        
+        .welcome-section h2 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+        
+        .opening-text {
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin-bottom: 1.5rem;
+            color: var(--dark-color);
+            line-height: 1.8;
+        }
+        
+        .quote {
+            font-style: italic;
+            color: var(--secondary-color);
+            margin: 1rem 0;
+            padding: 1rem;
+            border-right: 3px solid var(--accent-color);
+            background-color: rgba(210, 180, 140, 0.1);
+        }
+        
+        .topics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 20px;
+        }
+        
+        .topic-card {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            padding: 1.5rem;
+            transition: transform 0.3s, box-shadow 0.3s;
+            cursor: pointer;
+            border: 1px solid var(--accent-color);
+        }
+        
+        .topic-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .topic-icon {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+        
+        .topic-title {
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+        
+        .topic-description {
+            color: #666;
+            font-size: 0.9rem;
+        }
+        
+        /* Sections Page */
+        .page-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.7rem;
+            border-bottom: 1px solid #eaeaea;
+        }
+        
+        .back-btn {
+            background: none;
+            border: none;
+            color: var(--primary-color);
+            font-size: 1.2rem;
+            cursor: pointer;
+            margin-left: 15px;
+        }
+        
+        .page-title {
+            color: var(--primary-color);
+            font-size: 1.5rem;
+        }
+        
+        .sections-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+        }
+        
+        .section-card {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            padding: 1.5rem;
+            transition: transform 0.3s, box-shadow 0.3s;
+            cursor: pointer;
+            border: 1px solid var(--accent-color);
+        }
+        
+        .section-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 3px 12px rgba(0, 0, 0, 0.1);
+        }
+        
+        .section-title {
+            color: var(--secondary-color);
+            margin-bottom: 0.5rem;
+        }
+        
+        .section-count {
+            color: #666;
+            font-size: 0.9rem;
+        }
+        
+        /* Lectures Page */
+        .lectures-list {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        
+        .lecture-item {
+            display: flex;
+            align-items: center;
+            padding: 15px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+            border: 1px solid var(--accent-color);
+        }
+        
+        .lecture-item:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        .lecture-icon {
+            color: #ff0000;
+            font-size: 1.5rem;
+            margin-left: 15px;
+        }
+        
+        .lecture-info {
+            flex: 1;
+        }
+        
+        .lecture-title {
+            color: var(--dark-color);
+            margin-bottom: 5px;
+        }
+        
+        .lecture-duration {
+            color: #666;
+            font-size: 0.9rem;
+        }
+        
+        /* Lecture Page */
+        .lecture-container {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        
+        .video-container {
+            width: 100%;
+        }
+        
+        .video-wrapper {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+            height: 0;
+            overflow: hidden;
+            border-radius: 8px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .video-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        
+        .lecture-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 20px;
+        }
+        
+        .notes-container, .comments-container {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            padding: 1.5rem;
+            border: 1px solid var(--accent-color);
+        }
+        
+        .notes-title, .comments-title {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid #eaeaea;
+        }
+        
+        .notes-textarea {
+            width: 100%;
+            height: 150px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            resize: vertical;
+            margin-bottom: 10px;
+        }
+        
+        .comment-form {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-bottom: 1.5rem;
+        }
+        
+        .comment-input {
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            resize: vertical;
+        }
+        
+        .comments-list {
+            max-height: 300px;
+            overflow-y: auto;
+        }
+        
+        .comment-item {
+            padding: 10px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .comment-author {
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+        
+        .comment-date {
+            font-size: 0.8rem;
+            color: #666;
+            margin-right: 10px;
+        }
+        
+        /* Footer */
+        .footer {
+            background-color: var(--dark-color);
+            color: white;
+            text-align: center;
+            padding: 1.5rem 0;
+            margin-top: 2rem;
+        }
+        
+        .prayer {
+            font-style: italic;
+            margin-bottom: 1rem;
+            color: var(--accent-color);
+        }
+        
+        .developer {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .lecture-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .header-content {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .topics-grid, .sections-list {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div>
+                    <div class="logo">منهج المهندس أيمن عبد الرحيم</div>
+                    <div class="subtitle">فك الله بالعز أسره</div>
+                </div>
+                <div class="nav-buttons">
+                    <button class="btn btn-outline" id="homeBtn"><i class="fas fa-home"></i> الرئيسية</button>
+                    <button class="btn btn-primary" id="profileBtn"><i class="fas fa-user"></i> الملف الشخصي</button>
+                </div>
+            </div>
+        </div>
+    </header>
+    
+    <div class="container">
+        <!-- الصفحة الرئيسية -->
+        <div id="homePage" class="page active">
+            <div class="welcome-section">
+                <h2>مرحباً بك في تطبيق منهج المهندس أيمن عبدالرحيم</h2>
+                <div class="opening-text">
+                    "بسم الله والصلاة والسلام على رسول الله، الحمدلله الذي علم بالقلم علم الانسان ما لم يعلم، والصلاة والسلام على خير معلم الناس الخير محمد وبعد"
+                </div>
+                <div class="quote">
+                    "ما كان لله بقي"
+                </div>
+                <p>هذا التطبيق يقدم محتوى تعليمياً شاملاً في العلوم الشرعية والإنسانية وفق منهج م. أيمن عبدالرحيم</p>
+            </div>
+            
+            <div class="topics-grid">
+                <div class="topic-card" data-topic="intro">
+                    <div class="topic-icon">
+                        <i class="fas fa-door-open"></i>
+                    </div>
+                    <h3 class="topic-title">المدخل إلى المنهج</h3>
+                    <p class="topic-description">ندوات ومحاضرات تمهيدية لفهم منهج م. أيمن عبدالرحيم</p>
+                </div>
+                
+                <div class="topic-card" data-topic="doubts">
+                    <div class="topic-icon">
+                        <i class="fas fa-question-circle"></i>
+                    </div>
+                    <h3 class="topic-title">معالجة الشكوك</h3>
+                    <p class="topic-description">معالجة الشكوك والمسائل الوجودية والإلحادية</p>
+                </div>
+                
+                <div class="topic-card" data-topic="foundation">
+                    <div class="topic-icon">
+                        <i class="fas fa-layer-group"></i>
+                    </div>
+                    <h3 class="topic-title">منهج التأسيس</h3>
+                    <p class="topic-description">مدخل لمنهج تأسيس وفكر مالك بن نبي وبرنامج بره الصندوق</p>
+                </div>
+                
+                <div class="topic-card" data-topic="courses">
+                    <div class="topic-icon">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <h3 class="topic-title">الدورات الأساسية</h3>
+                    <p class="topic-description">دورات تأسيس 1 وتأسيس 2 وكافة المواد الأساسية</p>
+                </div>
+                
+                <div class="topic-card" data-topic="history">
+                    <div class="topic-icon">
+                        <i class="fas fa-history"></i>
+                    </div>
+                    <h3 class="topic-title">التاريخ</h3>
+                    <p class="topic-description">مدخل إلى التاريخ، السيرة النبوية، تاريخ الخلفاء والعهود الإسلامية</p>
+                </div>
+                
+                <div class="topic-card" data-topic="education">
+                    <div class="topic-icon">
+                        <i class="fas fa-home"></i>
+                    </div>
+                    <h3 class="topic-title">التربية</h3>
+                    <p class="topic-description">دورة البيت المسلم وأسس التربية الإسلامية</p>
+                </div>
+                
+                <div class="topic-card" data-topic="sciences">
+                    <div class="topic-icon">
+                        <i class="fas fa-flask"></i>
+                    </div>
+                    <h3 class="topic-title">المداخل العامة للعلوم</h3>
+                    <p class="topic-description">مداخل إلى العلوم الإنسانية، الفلسفة، الإحصاء والاقتصاد</p>
+                </div>
+                
+                <div class="topic-card" data-topic="language">
+                    <div class="topic-icon">
+                        <i class="fas fa-language"></i>
+                    </div>
+                    <h3 class="topic-title">اللغة</h3>
+                    <p class="topic-description">مدخل إلى اللغة، الوعي اللغوي، هندسة اللغة واللغة العربية</p>
+                </div>
+                
+                <div class="topic-card" data-topic="psychology">
+                    <div class="topic-icon">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <h3 class="topic-title">علم النفس</h3>
+                    <p class="topic-description">دورة علم النفس كاملة ومناقشة القرآن وعلم النفس</p>
+                </div>
+                
+                <div class="topic-card" data-topic="additional">
+                    <div class="topic-icon">
+                        <i class="fas fa-plus-circle"></i>
+                    </div>
+                    <h3 class="topic-title">مواد إضافية</h3>
+                    <p class="topic-description">مناقشات ولقاءات ومواد تكميلية</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- صفحة الأقسام -->
+        <div id="sectionsPage" class="page">
+            <div class="page-header">
+                <button class="back-btn" id="backFromSections"><i class="fas fa-arrow-right"></i> العودة</button>
+                <h2 class="page-title" id="sectionsPageTitle">الأقسام</h2>
+            </div>
+            
+            <div class="sections-list" id="sectionsList">
+                <!-- سيتم ملؤها ديناميكياً -->
+            </div>
+        </div>
+        
+        <!-- صفحة المحاضرات -->
+        <div id="lecturesPage" class="page">
+            <div class="page-header">
+                <button class="back-btn" id="backFromLectures"><i class="fas fa-arrow-right"></i> العودة</button>
+                <h2 class="page-title" id="lecturesPageTitle">المحاضرات</h2>
+            </div>
+            
+            <div class="lectures-list" id="lecturesList">
+                <!-- سيتم ملؤها ديناميكياً -->
+            </div>
+        </div>
+        
+        <!-- صفحة المحاضرة -->
+        <div id="lecturePage" class="page">
+            <div class="page-header">
+                <button class="back-btn" id="backFromLecture"><i class="fas fa-arrow-right"></i> العودة</button>
+                <h2 class="page-title" id="lecturePageTitle">المحاضرة</h2>
+            </div>
+            
+            <div class="lecture-container">
+                <div class="video-container">
+                    <div class="video-wrapper">
+                        <iframe id="lectureVideo" src="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                </div>
+                
+                <div class="lecture-content">
+                    <div class="notes-container">
+                        <h3 class="notes-title">ملاحظاتي</h3>
+                        <textarea class="notes-textarea" id="lectureNotes" placeholder="اكتب ملاحظاتك حول هذه المحاضرة هنا..."></textarea>
+                        <button class="btn btn-primary" id="saveNotes">حفظ الملاحظات</button>
+                        <div id="savedNotes" class="saved-notes" style="margin-top: 15px; padding: 10px; background-color: #f9f9f9; border-radius: 4px; display: none;">
+                            <h4>ملاحظاتك المحفوظة:</h4>
+                            <div id="notesContent"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="comments-container">
+                        <h3 class="comments-title">التعليقات</h3>
+                        <div class="comment-form">
+                            <textarea class="comment-input" id="commentInput" placeholder="اكتب تعليقك هنا..."></textarea>
+                            <button class="btn btn-primary" id="addComment">إضافة تعليق</button>
+                        </div>
+                        <div class="comments-list" id="commentsList">
+                            <!-- سيتم ملؤها ديناميكياً -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <footer class="footer">
+        <div class="container">
+            <p class="prayer">"اللهم فك بالعز أسر عبدك أيمن عبدالرحيم واجعل أعماله رفعة له في الدارين، وآخر دعوانا أن الحمدلله رب العالمين."</p>
+            <div class="developer">
+                مبرمج الموقع: د. ثريا صلاح مرتضى سيدأحمد<br>
+                للاستفسار، الاقتراح أو التعديل التواصل: Thoraya.tech@gmail.com
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // بيانات التطبيق الكاملة
+        const appData = {
+            intro: {
+                title: "المدخل إلى فهم منهج البشمهندس أيمن عبدالرحيم",
+                sections: [
+                    {
+                        title: "ندوات تمهيدية",
+                        lectures: [
+                            { title: "ندوة خريطة العلوم - فريق معرفة", url: "https://www.youtube.com/embed/tml4dZ2j7lw" },
+                            { title: "ندوة من هنا نبدأ", url: "https://www.youtube.com/embed/OSF-5Va_ZpE" },
+                            { title: "ندوة القراءة - فريق القاهرة", url: "https://www.youtube.com/embed/AqaSKRR7sfA" },
+                            { title: "ندوة القراءة - فريق الإسكندرية", url: "https://www.youtube.com/embed/r7lFId_uY4M" }
+                        ]
+                    },
+                    {
+                        title: "كيف أتعلم؟ وماذا أتعلم؟",
+                        lectures: [
+                            { title: "الجزء الأول", url: "https://www.youtube.com/embed/0b7PeLqG-Po" },
+                            { title: "الجزء الثاني", url: "https://www.youtube.com/embed/0Oz7u0dhGJ0" },
+                            { title: "الجزء الثالث", url: "https://www.youtube.com/embed/IhXGyte9nPQ" }
+                        ]
+                    }
+                ]
+            },
+            doubts: {
+                title: "معالجة الشكوك والمسائل الوجودية",
+                sections: [
+                    {
+                        title: "ندوات الشكوك",
+                        lectures: [
+                            { title: "ندوة الاستلحاد", url: "https://www.youtube.com/embed/3PvyBFK0LCc" },
+                            { title: "ندوة الأسئلة الوجودية", url: "https://www.youtube.com/embed/VSyZzLttTZU" }
+                        ]
+                    }
+                ]
+            },
+            foundation: {
+                title: "مدخل لمنهج تأسيس",
+                sections: [
+                    {
+                        title: "فكر مالك بن نبي",
+                        lectures: [
+                            { title: "الاطلاع على فكر مالك بن نبي - ندوة عامة", url: "https://www.youtube.com/embed/C8rQ7_8u6iw" },
+                            { title: "هندسة النهضة عند مالك بن نبي", url: "https://www.youtube.com/embed/QEHWJ4q1GhA" },
+                            { title: "شروط النهضة - مالك بن نبي", url: "https://www.youtube.com/embed/sjsL7gWZrQI" }
+                        ]
+                    },
+                    {
+                        title: "برنامج بره الصندوق",
+                        lectures: [
+                            { title: "الحلقة 1", url: "https://www.youtube.com/embed/cDSDeahH8mY" },
+                            { title: "الحلقة 2", url: "https://www.youtube.com/embed/AjJXBJukWmg" },
+                            { title: "الحلقة 3", url: "https://www.youtube.com/embed/rlopdp6aB_k" },
+                            { title: "الحلقة 4", url: "https://www.youtube.com/embed/9zzI7ZxgOZU" },
+                            { title: "الحلقة 5", url: "https://www.youtube.com/embed/UftyvhDSaMc" },
+                            { title: "الحلقة 6", url: "https://www.youtube.com/embed/FSHxics51NE" },
+                            { title: "الحلقة 7", url: "https://www.youtube.com/embed/78p2Txpskp0" },
+                            { title: "الحلقة 8", url: "https://www.youtube.com/embed/G_90-rd9mKg" },
+                            { title: "الحلقة 9", url: "https://www.youtube.com/embed/vODnu5f1heI" },
+                            { title: "الحلقة 10", url: "https://www.youtube.com/embed/zYG2R7FFE5c" },
+                            { title: "الحلقة 11", url: "https://www.youtube.com/embed/Jb3CrGLsTcM" }
+                        ]
+                    },
+                    {
+                        title: "محاضرات مهمة لمدخل تأسيس",
+                        lectures: [
+                            { title: "محاضرة التأسيس المعرفي والجماعات الوسيطة", url: "https://www.youtube.com/embed/p6V9GW9RSZY" },
+                            { title: "الجماعات الوسيطة وبناء المجتمعات", url: "https://www.youtube.com/embed/maKdrM_1P9c" },
+                            { title: "الحلقة الأولى - بره الصندوق", url: "https://www.youtube.com/embed/-3Dn2VtbG8c" },
+                            { title: "الحلقة الخامسة - بره الصندوق", url: "https://www.youtube.com/embed/UNWNtmD-Pxc" }
+                        ]
+                    }
+                ]
+            },
+            courses: {
+                title: "الدخول إلى الدورات الأساسية",
+                sections: [
+                    {
+                        title: "تأسيس 1",
+                        lectures: [
+                            { title: "المحاضرة 1", url: "https://www.youtube.com/embed/8VQW8qUIlAg" },
+                            { title: "المحاضرة 2", url: "https://www.youtube.com/embed/FbYE4_zpWxM" },
+                            { title: "المحاضرة 3", url: "https://www.youtube.com/embed/nK-9mizvvr4" },
+                            { title: "المحاضرة 4", url: "https://www.youtube.com/embed/RqCKTPYJCMM" },
+                            { title: "المحاضرة 5", url: "https://www.youtube.com/embed/AwwVJ0r5ejc" },
+                            { title: "المحاضرة 6", url: "https://www.youtube.com/embed/32aK7kwb69U" },
+                            { title: "المحاضرة 7", url: "https://www.youtube.com/embed/d2O7VJ8V59s" },
+                            { title: "المحاضرة 8", url: "https://www.youtube.com/embed/AmgFjR2RhRU" },
+                            { title: "المحاضرة 9", url: "https://www.youtube.com/embed/PrtjKqvUgxc" }
+                        ]
+                    },
+                    {
+                        title: "استكمال تأسيس 1",
+                        lectures: [
+                            { title: "الحلقة 4 (إفريقيا)", url: "https://www.youtube.com/embed/5bbVJl1C-aA" },
+                            { title: "الحلقة 5 (تركيا)", url: "https://www.youtube.com/embed/7MRikAxr22A" },
+                            { title: "الحلقة 7 (إيران وأفغانستان)", url: "https://www.youtube.com/embed/czqMjNGVymg" }
+                        ]
+                    },
+                    {
+                        title: "تأسيس 2",
+                        lectures: [
+                            { title: "المحاضرة 1", url: "https://www.youtube.com/embed/f_8omvN42K4" },
+                            { title: "المحاضرة 2", url: "https://www.youtube.com/embed/0dKYTshQolw" },
+                            { title: "المحاضرة 3", url: "https://www.youtube.com/embed/7zzCfrNK__g" },
+                            { title: "المحاضرة 4", url: "https://www.youtube.com/embed/u0ebuWN7tzc" },
+                            { title: "المحاضرة 5", url: "https://www.youtube.com/embed/S_Lh1-gq6MU" },
+                            { title: "المحاضرة 6", url: "https://www.youtube.com/embed/uQbY860_cRQ" },
+                            { title: "المحاضرة 7", url: "https://www.youtube.com/embed/197B3SlGI90" },
+                            { title: "المحاضرة 8", url: "https://www.youtube.com/embed/pXAm1odzavI" }
+                        ]
+                    }
+                ]
+            },
+            history: {
+                title: "التاريخ",
+                sections: [
+                    {
+                        title: "مدخل إلى التاريخ (نسخة 2014)",
+                        lectures: [
+                            { title: "المحاضرة 1", url: "https://www.youtube.com/embed/WkQhsWxYNhw" },
+                            { title: "المحاضرة 2", url: "https://www.youtube.com/embed/K5nU1WCN_eY" },
+                            { title: "المحاضرة 3", url: "https://www.youtube.com/embed/iCvDfgZXcEI" },
+                            { title: "المحاضرة 4", url: "https://www.youtube.com/embed/62A75sQgMv8" }
+                        ]
+                    },
+                    {
+                        title: "السيرة النبوية - العهد المكي",
+                        lectures: [
+                            { title: "المحاضرة 1", url: "https://www.youtube.com/embed/JHXU4_XrXaE" },
+                            { title: "المحاضرة 2", url: "https://www.youtube.com/embed/K8MtVwRs9hA" },
+                            { title: "المحاضرة 3", url: "https://www.youtube.com/embed/XG-ApIjqs74" },
+                            { title: "المحاضرة 4", url: "https://www.youtube.com/embed/110Bbyv-mz4" },
+                            { title: "المحاضرة 5", url: "https://www.youtube.com/embed/9EMXKmnPfzA" },
+                            { title: "المحاضرة 6", url: "https://www.youtube.com/embed/3Vb4hUCR_dw" }
+                        ]
+                    },
+                    {
+                        title: "تاريخ الخلفاء الراشدين",
+                        lectures: [
+                            { title: "المحاضرة 1", url: "https://www.youtube.com/embed/U9NaWuxarrs" },
+                            { title: "المحاضرة 2", url: "https://www.youtube.com/embed/Upv1GOQ0Gs0" },
+                            { title: "المحاضرة 3", url: "https://www.youtube.com/embed/xApAJnb8I9E" },
+                            { title: "المحاضرة 4", url: "https://www.youtube.com/embed/DH6O6Kl8ja8" },
+                            { title: "المحاضرة 5", url: "https://www.youtube.com/embed/lKwM42V8QmA" },
+                            { title: "المحاضرة 6", url: "https://www.youtube.com/embed/vjS8Q-g7M84" }
+                        ]
+                    },
+                    {
+                        title: "العشرة المبشرون بالجنة",
+                        lectures: [
+                            { title: "المحاضرة 1", url: "https://www.youtube.com/embed/pVRmglxqB74" },
+                            { title: "المحاضرة 2", url: "https://www.youtube.com/embed/9SWvw5k94Vk" },
+                            { title: "المحاضرة 3", url: "https://www.youtube.com/embed/-jqZ50zyw4o" },
+                            { title: "المحاضرة 4", url: "https://www.youtube.com/embed/VHzJH3UaRqw" }
+                        ]
+                    },
+                    {
+                        title: "العهد الأموي والعباسي",
+                        lectures: [
+                            { title: "المحاضرة 1", url: "https://www.youtube.com/embed/bz0rn-9gizU" },
+                            { title: "المحاضرة 2", url: "https://www.youtube.com/embed/dRYSFMnqxmc" },
+                            { title: "المحاضرة 3", url: "https://www.youtube.com/embed/0DuxpGEgjhY" },
+                            { title: "المحاضرة 4", url: "https://www.youtube.com/embed/EUlOyD_4pKY" },
+                            { title: "المحاضرة 5", url: "https://www.youtube.com/embed/w47FQ7c6dF0" },
+                            { title: "المحاضرة 6", url: "https://www.youtube.com/embed/ifQdZ0UF8kc" }
+                        ]
+                    },
+                    {
+                        title: "مدخل التاريخ - نسخة 2017",
+                        lectures: [
+                            { title: "المحاضرة 1", url: "https://www.youtube.com/embed/3x9yV3EHMxw" },
+                            { title: "المحاضرة 2", url: "https://www.youtube.com/embed/ypgn3Z-AsM4" },
+                            { title: "المحاضرة 3", url: "https://www.youtube.com/embed/6ncjyE0U7NE" },
+                            { title: "المحاضرة 4", url: "https://www.youtube.com/embed/o-P9pshPVMg" },
+                            { title: "المحاضرة 5", url: "https://www.youtube.com/embed/2sZhAkEj7gw" },
+                            { title: "المحاضرة 6", url: "https://www.youtube.com/embed/DIbxFb8A8WM" },
+                            { title: "المحاضرة 7", url: "https://www.youtube.com/embed/Uapb7Fsq-TU" },
+                            { title: "المحاضرة 8", url: "https://www.youtube.com/embed/jxiQ2sDDcPM" },
+                            { title: "المحاضرة 9", url: "https://www.youtube.com/embed/uYIo1amfNrc" }
+                        ]
+                    }
+                ]
+            },
+            education: {
+                title: "التربية",
+                sections: [
+                    {
+                        title: "دورة البيت المسلم",
+                        lectures: [
+                            { title: "المحاضرة 1", url: "https://www.youtube.com/embed/XeXo81L-zzw" },
+                            { title: "المحاضرة 2", url: "https://www.youtube.com/embed/M7G_c6uuEjA" },
+                            { title: "المحاضرة 3", url: "https://www.youtube.com/embed/Wd_vCk_2N_M" },
+                            { title: "المحاضرة 4", url: "https://www.youtube.com/embed/ScPvpwqyssY" },
+                            { title: "المحاضرة 5", url: "https://www.youtube.com/embed/bZiK7h3As-8" },
+                            { title: "المحاضرة 6", url: "https://www.youtube.com/embed/-TzLq8GQxiE" },
+                            { title: "المحاضرة 7", url: "https://www.youtube.com/embed/GVGm48kAZHE" },
+                            { title: "المحاضرة 8", url: "https://www.youtube.com/embed/6jFmvk29RMQ" }
+                        ]
+                    }
+                ]
+            },
+            sciences: {
+                title: "المداخل العامة للعلوم",
+                sections: [
+                    {
+                        title: "الدورة التعريفية بالعلوم الإنسانية",
+                        lectures: [
+                            { title: "المحاضرة 1", url: "https://www.youtube.com/embed/TRpN45YcxkA" },
+                            { title: "المحاضرة 2", url: "https://www.youtube.com/embed/-8PCxoUxjhc" },
+                            { title: "المحاضرة 3", url: "https://www.youtube.com/embed/9rx5-IB3fiA" },
+                            { title: "المحاضرة 4", url: "https://www.youtube.com/embed/b30Mwro4bwc" }
+                        ]
+                    },
+                    {
+                        title: "محاضرات إضافية",
+                        lectures: [
+                            { title: "بره الصندوق - الحلقة الثالثة", url: "https://www.youtube.com/embed/rlopdp6aB_k" },
+                            { title: "بره الصندوق - الحلقة الرابعة", url: "https://www.youtube.com/embed/9zzI7ZxgOZU" },
+                            { title: "ندوة ذواقة الشاي (مدخل للإحصاء)", url: "https://www.youtube.com/embed/AKzmWZ1d53I" },
+                            { title: "ندوة التكافل الاجتماعي والاقتصاد", url: "https://www.youtube.com/embed/Gc4WUALN6wQ" },
+                            { title: "محاضرة مدخل الفلسفة", url: "https://www.youtube.com/embed/6pbBLHFXSC8" }
+                        ]
+                    }
+                ]
+            },
+            language: {
+                title: "اللغة",
+                sections: [
+                    {
+                        title: "مدخل إلى اللغة",
+                        lectures: [
+                            { title: "الحلقة السادسة من تأسيس (عن اللغة)", url: "https://www.youtube.com/embed/1qBTd5NYQ2E" },
+                            { title: "الهندسة باللغة العبرية الفصحى", url: "https://www.youtube.com/embed/6nmcGQJ7m9w" },
+                            { title: "لماذا نعلم أطفالنا اللغات الأجنبية؟", url: "https://www.youtube.com/embed/UB09OMNSPwE" },
+                            { title: "مجتمع بلا مدارس", url: "https://www.youtube.com/embed/5KDvtopJ5QA" }
+                        ]
+                    },
+                    {
+                        title: "دورة الوعي اللغوي",
+                        lectures: [
+                            { title: "المحاضرة 1", url: "https://www.youtube.com/embed/M1HF1GoHBhY" },
+                            { title: "المحاضرة 2", url: "https://www.youtube.com/embed/NevxOGgyJxI" },
+                            { title: "المحاضرة 3", url: "https://www.youtube.com/embed/lVsG5IJAnfo" },
+                            { title: "المحاضرة 4", url: "https://www.youtube.com/embed/4sjVXyJxJMk" },
+                            { title: "المحاضرة 5", url: "https://www.youtube.com/embed/-uK1c9-jRbY" },
+                            { title: "المحاضرة 6", url: "https://www.youtube.com/embed/dWrddOWT64o" },
+                            { title: "المحاضرة 7", url: "https://www.youtube.com/embed/93d5z3qfKrw" },
+                            { title: "المحاضرة 8", url: "https://www.youtube.com/embed/n-Zx3M05pg8" },
+                            { title: "المحاضرة 9", url: "https://www.youtube.com/embed/GlS_VI42roU" }
+                        ]
+                    },
+                    {
+                        title: "دورة هندسة اللغة",
+                        lectures: [
+                            { title: "كيف تصبح مهندسًا لغويًا", url: "https://www.youtube.com/embed/x3djKHegeR0" },
+                            { title: "هندسة اللغة | م أيمن عبدالرحيم", url: "https://www.youtube.com/embed/Pq_uGaVHXQM" },
+                            { title: "هندسة اللغة .. ضرورة أم رفاهية؟", url: "https://www.youtube.com/embed/hJHndcUqQ0Y" },
+                            { title: "هندسة اللغة .. رفاهية أم ضرورة ؟ جـ 1", url: "https://www.youtube.com/embed/sqqjVEoqPro" },
+                            { title: "هندسة اللغة .. رفاهية أم ضرورة جـ 2", url: "https://www.youtube.com/embed/7hr8atpPLIw" }
+                        ]
+                    },
+                    {
+                        title: "دورة مدخل إلى اللغة العربية",
+                        lectures: [
+                            { title: "المحاضرة 1", url: "https://www.youtube.com/embed/hthr4W3Dzek" },
+                            { title: "المحاضرة 2", url: "https://www.youtube.com/embed/ff4PGBY4wQA" },
+                            { title: "المحاضرة 3", url: "https://www.youtube.com/embed/KRA6pMZmH4c" },
+                            { title: "المحاضرة 4", url: "https://www.youtube.com/embed/0xhJrqVQe4k" },
+                            { title: "المحاضرة 5", url: "https://www.youtube.com/embed/7r8sHbfmGbg" },
+                            { title: "المحاضرة 6", url: "https://www.youtube.com/embed/4ggWQ-fvfxo" },
+                            { title: "المحاضرة 7", url: "https://www.youtube.com/embed/u1wSG2TJ3H8" },
+                            { title: "المحاضرة 8", url: "https://www.youtube.com/embed/KXnz_39agmY" },
+                            { title: "المحاضرة 9", url: "https://www.youtube.com/embed/VywSynf-vFk" }
+                        ]
+                    }
+                ]
+            },
+            psychology: {
+                title: "علم النفس",
+                sections: [
+                    {
+                        title: "دورة علم النفس كاملة",
+                        lectures: [
+                            { title: "المحاضرة 1", url: "https://www.youtube.com/embed/fLd9qeWwyQk" },
+                            { title: "المحاضرة 2", url: "https://www.youtube.com/embed/ElhAoIiVg64" },
+                            { title: "المحاضرة 3", url: "https://www.youtube.com/embed/0sWjaJLRtI4" },
+                            { title: "المحاضرة 4", url: "https://www.youtube.com/embed/H7PsGbipndk" },
+                            { title: "المحاضرة 5", url: "https://www.youtube.com/embed/nGKmi8-iaSA" },
+                            { title: "المحاضرة 6", url: "https://www.youtube.com/embed/pDn5B7dwqec" },
+                            { title: "المحاضرة 7", url: "https://www.youtube.com/embed/TfI4vgekDXs" },
+                            { title: "المحاضرة 8", url: "https://www.youtube.com/embed/081AwFfrH4w" },
+                            { title: "المحاضرة 9", url: "https://www.youtube.com/embed/mWLbpfK3Gc0" },
+                            { title: "المحاضرة 10", url: "https://www.youtube.com/embed/qtvigj6wu54" },
+                            { title: "المحاضرة 11", url: "https://www.youtube.com/embed/cCQ8kaQg8no" }
+                        ]
+                    },
+                    {
+                        title: "مواد إضافية في علم النفس",
+                        lectures: [
+                            { title: "مناقشة القرآن وعلم النفس", url: "https://www.youtube.com/embed/xgQ8KQ8Vz7s" }
+                        ]
+                    }
+                ]
+            },
+            additional: {
+                title: "مواد إضافية",
+                sections: [
+                    {
+                        title: "مناقشات ولقاءات",
+                        lectures: [
+                            { title: "مناقشة كتاب ما بعد السلفية", url: "https://www.youtube.com/embed/tEGik2VpztY" },
+                            { title: "لقاء م. أيمن مع د. حسام أبو البخاري", url: "https://www.youtube.com/embed/vDCuy-83SBM" },
+                            { title: "ابدأ من الصفر", url: "https://www.youtube.com/embed/j7c3F6D_R1U" }
+                        ]
+                    }
+                ]
+            }
+        };
+
+        // حالة التطبيق
+        let currentTopic = '';
+        let currentSection = '';
+        let currentLecture = '';
+
+        // عناصر DOM
+        const homePage = document.getElementById('homePage');
+        const sectionsPage = document.getElementById('sectionsPage');
+        const lecturesPage = document.getElementById('lecturesPage');
+        const lecturePage = document.getElementById('lecturePage');
+        
+        const sectionsPageTitle = document.getElementById('sectionsPageTitle');
+        const lecturesPageTitle = document.getElementById('lecturesPageTitle');
+        const lecturePageTitle = document.getElementById('lecturePageTitle');
+        
+        const sectionsList = document.getElementById('sectionsList');
+        const lecturesList = document.getElementById('lecturesList');
+        const lectureVideo = document.getElementById('lectureVideo');
+        const lectureNotes = document.getElementById('lectureNotes');
+        const savedNotes = document.getElementById('savedNotes');
+        const notesContent = document.getElementById('notesContent');
+        const commentsList = document.getElementById('commentsList');
+        const commentInput = document.getElementById('commentInput');
+
+        // الأحداث
+        document.querySelectorAll('.topic-card').forEach(card => {
+            card.addEventListener('click', () => {
+                currentTopic = card.dataset.topic;
+                showSectionsPage();
+            });
+        });
+
+        document.getElementById('backFromSections').addEventListener('click', showHomePage);
+        document.getElementById('backFromLectures').addEventListener('click', showSectionsPage);
+        document.getElementById('backFromLecture').addEventListener('click', showLecturesPage);
+        document.getElementById('homeBtn').addEventListener('click', showHomePage);
+        document.getElementById('saveNotes').addEventListener('click', saveNotes);
+        document.getElementById('addComment').addEventListener('click', addComment);
+
+        // وظائف التطبيق
+        function showHomePage() {
+            hideAllPages();
+            homePage.classList.add('active');
+        }
+
+        function showSectionsPage() {
+            hideAllPages();
+            sectionsPageTitle.textContent = appData[currentTopic].title;
+            sectionsList.innerHTML = '';
+            
+            appData[currentTopic].sections.forEach((section, index) => {
+                const sectionCard = document.createElement('div');
+                sectionCard.className = 'section-card';
+                sectionCard.innerHTML = `
+                    <h3 class="section-title">${section.title}</h3>
+                    <p class="section-count">${section.lectures.length} محاضرة</p>
+                `;
+                sectionCard.addEventListener('click', () => {
+                    currentSection = index;
+                    showLecturesPage();
+                });
+                sectionsList.appendChild(sectionCard);
+            });
+            
+            sectionsPage.classList.add('active');
+        }
+
+        function showLecturesPage() {
+            hideAllPages();
+            lecturesPageTitle.textContent = appData[currentTopic].sections[currentSection].title;
+            lecturesList.innerHTML = '';
+            
+            appData[currentTopic].sections[currentSection].lectures.forEach((lecture, index) => {
+                const lectureItem = document.createElement('div');
+                lectureItem.className = 'lecture-item';
+                lectureItem.innerHTML = `
+                    <div class="lecture-icon">
+                        <i class="fab fa-youtube"></i>
+                    </div>
+                    <div class="lecture-info">
+                        <h3 class="lecture-title">${lecture.title}</h3>
+                        <p class="lecture-duration">مدة المحاضرة: 60 دقيقة</p>
+                    </div>
+                `;
+                lectureItem.addEventListener('click', () => {
+                    currentLecture = index;
+                    showLecturePage();
+                });
+                lecturesList.appendChild(lectureItem);
+            });
+            
+            lecturesPage.classList.add('active');
+        }
+
+        function showLecturePage() {
+            hideAllPages();
+            const lecture = appData[currentTopic].sections[currentSection].lectures[currentLecture];
+            lecturePageTitle.textContent = lecture.title;
+            lectureVideo.src = lecture.url;
+            
+            // تحميل الملاحظات والتعليقات من localStorage
+            loadNotes();
+            loadComments();
+            
+            lecturePage.classList.add('active');
+        }
+
+        function hideAllPages() {
+            document.querySelectorAll('.page').forEach(page => {
+                page.classList.remove('active');
+            });
+        }
+
+        function saveNotes() {
+            const key = `notes_${currentTopic}_${currentSection}_${currentLecture}`;
+            const notesText = lectureNotes.value.trim();
+            
+            if (notesText) {
+                localStorage.setItem(key, notesText);
+                notesContent.textContent = notesText;
+                savedNotes.style.display = 'block';
+                alert('تم حفظ الملاحظات بنجاح!');
+            } else {
+                alert('يرجى كتابة ملاحظات قبل الحفظ');
+            }
+        }
+
+        function loadNotes() {
+            const key = `notes_${currentTopic}_${currentSection}_${currentLecture}`;
+            const savedNotesText = localStorage.getItem(key);
+            
+            if (savedNotesText) {
+                lectureNotes.value = savedNotesText;
+                notesContent.textContent = savedNotesText;
+                savedNotes.style.display = 'block';
+            } else {
+                lectureNotes.value = '';
+                savedNotes.style.display = 'none';
+            }
+        }
+
+        function addComment() {
+            const commentText = commentInput.value.trim();
+            if (!commentText) {
+                alert('يرجى كتابة تعليق قبل الإضافة');
+                return;
+            }
+            
+            const key = `comments_${currentTopic}_${currentSection}_${currentLecture}`;
+            const comments = JSON.parse(localStorage.getItem(key) || '[]');
+            
+            const newComment = {
+                id: Date.now(),
+                text: commentText,
+                author: 'مستخدم',
+                date: new Date().toLocaleString('ar-EG')
+            };
+            
+            comments.unshift(newComment);
+            localStorage.setItem(key, JSON.stringify(comments));
+            
+            commentInput.value = '';
+            loadComments();
+            alert('تم إضافة التعليق بنجاح!');
+        }
+
+        function loadComments() {
+            const key = `comments_${currentTopic}_${currentSection}_${currentLecture}`;
+            const comments = JSON.parse(localStorage.getItem(key) || '[]');
+            
+            commentsList.innerHTML = '';
+            
+            if (comments.length === 0) {
+                commentsList.innerHTML = '<p>لا توجد تعليقات بعد. كن أول من يعلق!</p>';
+                return;
+            }
+            
+            comments.forEach(comment => {
+                const commentItem = document.createElement('div');
+                commentItem.className = 'comment-item';
+                commentItem.innerHTML = `
+                    <div>
+                        <span class="comment-author">${comment.author}</span>
+                        <span class="comment-date">${comment.date}</span>
+                    </div>
+                    <p>${comment.text}</p>
+                `;
+                commentsList.appendChild(commentItem);
+            });
+        }
+
+        // تهيئة التطبيق
+        showHomePage();
+    </script>
+</body>
+</html>
